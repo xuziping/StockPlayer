@@ -1,0 +1,50 @@
+# 用户数据
+player:
+  userName: xuzp
+  cash: 100000
+  useSimulateData: true
+  favoriteStocks: [
+  "SH601318"
+#  # 银行
+#  "600036", "000001", "600000", "601398", "601288", "601818",
+#  # 医药
+#  "600276", "600196", "000963",
+#  # 汽车
+#  "600104", "002594", "601238",
+#  # 酒/食品
+#  "000568", "000858", "000895"
+  ]
+  rules:
+    - "SH601318低于69.5元买入"
+    - "SH601318在70块卖出"
+
+
+# 保存用户数据
+storage:
+  path: D:/wstock_metastock/
+  saveAsJSON: true
+
+# 历史模拟数据相关属性
+simulate-data:
+  path: D:/wstock_metastock/5min/8
+  startDate: 20170929
+  endDate: 20171231
+  autoRefresh: true
+
+# 是否自动买卖股票
+isAutoTransact: true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
