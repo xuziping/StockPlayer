@@ -32,6 +32,8 @@ public class RuleProcessorTest extends StockPlayerApplicationTests{
         StockRule<IStock, IStockOperate> result = ruleProcessor.parse("SH601318低于53.6元买入");
         log.info(JSON.toJSONString(result));
 
+        result.getOperate().process(storage.loadPlayer(), result.getStock(),result.getStock());
+
         String jsonData = JSONUtils.toString(result);
         log.info(jsonData);
     }

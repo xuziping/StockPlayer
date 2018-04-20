@@ -48,9 +48,9 @@ public class NLPServiceImpl implements INLPShareService {
                         return false;
                     }).findAny();
 
-                   if(tar.isPresent()) {
-                       obj.handle(tar.get());
-                   }
+//                   if(tar.isPresent()) {
+//                       obj.handle(tar.get());
+//                   }
 
                 }
             }

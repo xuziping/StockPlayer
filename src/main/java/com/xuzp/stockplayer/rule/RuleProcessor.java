@@ -3,10 +3,8 @@ package com.xuzp.stockplayer.rule;
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.seg.Segment;
 import com.hankcs.hanlp.seg.common.Term;
-import com.xuzp.stockplayer.model.IStock;
-import com.xuzp.stockplayer.model.Stock;
+import com.xuzp.stockplayer.model.nlp.NLPStock;
 import com.xuzp.stockplayer.nlp.NLPAdapterResult;
-import com.xuzp.stockplayer.operate.IStockOperate;
 import com.xuzp.stockplayer.operate.impl.BuyStockOperateImpl;
 import com.xuzp.stockplayer.operate.impl.SellStockOperateImpl;
 import org.slf4j.Logger;
@@ -32,22 +30,25 @@ public class RuleProcessor {
     @Autowired
     private SellStockOperateImpl sellStockOperate;
 
+    @Autowired
+    private NLPStock nlpStock;
+
     public StockRule parse(String input) throws Exception {
         Segment segment = HanLP.newSegment().enablePlaceRecognize(true);
         List<Term> termList = segment.seg(input);
 
-        NLPAdapterResult<IStock> stockResult = new Stock().nlpAdapte(termList);
+        // 获取名词目标对象
+        NLPAdapterResult stockResult = nlpStock.nlpAdapte(termList);
         if (stockResult != null) {
 
-            NLPAdapterResult <IStockOperate> operateResult = buyStockOperate.nlpAdapte(termList);
+            NLPAdapterResult operateResult = buyStockOperate.nlpAdapte(termList);
             if (operateResult == null) {
                 operateResult = sellStockOperate.nlpAdapte(termList);
             }
 
             if (operateResult != null) {
-                return new StockRule<IStock, IStockOperate>(stockResult.getValue(), operateResult.getValue());
+                return new StockRule(stockResult.getValue(), operateResult.getValue());
             }
-
         }
         return null;
     }

@@ -1,23 +1,11 @@
 package com.xuzp.stockplayer.model;
 
-import com.google.gson.InstanceCreator;
-import com.hankcs.hanlp.corpus.tag.Nature;
-import com.hankcs.hanlp.seg.common.Term;
-import com.xuzp.stockplayer.common.Constants;
-import com.xuzp.stockplayer.common.ValidateUtils;
-import com.xuzp.stockplayer.nlp.AdaptedLevelEnum;
 import com.xuzp.stockplayer.nlp.INLPTarget;
-import com.xuzp.stockplayer.nlp.NLPAdapterResult;
-import org.apache.commons.lang3.math.NumberUtils;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author XuZiPing
